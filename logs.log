@@ -1,0 +1,794 @@
+2025-04-08 18:49:37,598 - aiohttp.server - ERROR - Error handling request from 127.0.0.1
+Traceback (most recent call last):
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\connection.py", line 281, in connect
+    await self.retry.call_with_retry(
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\retry.py", line 59, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\connection.py", line 697, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1124, in create_connection
+    raise exceptions[0]
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1101, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1004, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 727, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 798, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 594, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\aiohttp\web_protocol.py", line 480, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\aiohttp\web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\aiohttp\web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\source\repos\telefront\main.py", line 25, in handle_404
+    resp = await handler(r)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\source\repos\telefront\main.py", line 58, in get_register
+    if not (await check_token(r)):
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\source\repos\telefront\main.py", line 41, in check_token
+    return token == (await redis.getex(f'token_{user_id}', timedelta(days=7)))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\client.py", line 611, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\connection.py", line 1064, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\connection.py", line 1097, in ensure_connection
+    await connection.connect()
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\redis\asyncio\connection.py", line 289, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. Удаленный компьютер отклонил это сетевое подключение.
+2025-04-08 18:51:23,957 - aiohttp.server - ERROR - Missing return statement on request handler
+Traceback (most recent call last):
+  File "C:\Users\cabup\AppData\Local\pypoetry\Cache\virtualenvs\telefront-sK-Qulye-py3.12\Lib\site-packages\aiohttp\web_protocol.py", line 666, in finish_response
+    prepare_meth = resp.prepare
+                   ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'prepare'
+2025-04-08 19:01:56,980 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-08 19:01:56,981 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 19:01:56,990 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:01:57,667 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:01:57,695 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:02:27,880 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:02:27,934 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:02:28,641 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:02:28,667 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:02:43,427 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:02:43] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-04-08 19:02:43,798 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:02:43] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-08 19:02:43,798 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:02:43] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-08 19:02:43,902 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:02:43] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=GFzSKiSUHkO53lvbrfLS HTTP/1.1" 200 -
+2025-04-08 19:02:43,947 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:02:43] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-08 19:03:34,150 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:03:34,202 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:03:34,892 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:03:34,920 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:04:22,817 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 19:04:22,828 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:04:22] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:04:22,931 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:04:22] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:04:57,023 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:04:57,078 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:04:57,767 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:04:57,795 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:10:59,244 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:10:59,302 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:11:23,024 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 19:11:23,024 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 19:11:23,027 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:11:23,696 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:11:23,721 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:11:25,220 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:25] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:11:25,328 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:25] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:11:32,693 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:32] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:11:32,776 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:32] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:11:34,690 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:34] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:11:34,773 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:34] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:11:51,867 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:51] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:11:51,934 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:51] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:11:51,974 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:11:51] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:12:28,216 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:12:28,270 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:12:28,957 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:12:28,983 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:12:30,103 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:12:30,156 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:12:30,820 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:12:30,846 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:12:32,461 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:32] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:12:32,530 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:32] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:12:32,563 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:32] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:12:34,203 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:34] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:12:34,267 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:34] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:12:34,308 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:34] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:12:35,371 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:35] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:12:35,434 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:35] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:12:35,477 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:35] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:12:48,874 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:48] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:12:48,938 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:48] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:12:48,973 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:12:48] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:13:03,118 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:13:03,171 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:14:22,008 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 19:14:22,009 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 19:14:22,010 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:14:22,686 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:14:22,712 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:14:24,196 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:24] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:14:24,276 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:24] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:14:24,318 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:24] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:14:27,004 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:27] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:14:27,103 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:27] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:14:56,053 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:14:56,101 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:14:56,781 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:14:56,806 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:14:58,074 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:58] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+2025-04-08 19:14:58,275 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:58] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-08 19:14:58,276 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:58] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-08 19:14:58,337 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:58] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=BEDJ7awtJuU1zrpYQkr0 HTTP/1.1" 200 -
+2025-04-08 19:14:58,365 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:14:58] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-08 19:15:33,868 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:33] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:33,939 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:33] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:33,974 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:33] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:35,677 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:35] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:35,740 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:35] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:35,783 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:35] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:36,814 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:36] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:36,877 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:36] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:36,911 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:36] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:37,870 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:37] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:37,935 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:37] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:37,971 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:37] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:50,832 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:50] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:50,896 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:50] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:50,939 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:50] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:52,464 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:52] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:15:52,670 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:52] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:52,726 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:52] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:53,436 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:53] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:15:53,518 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:53] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:15:53,579 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:53] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:54,435 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:54] "GET /forgot-password HTTP/1.1" 200 -
+2025-04-08 19:15:54,537 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:54] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:15:55,614 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:15:55] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:16:20,338 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:20] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:16:20,419 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:20] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:16:20,499 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:20] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:16:23,684 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:23] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:16:23,753 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:23] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:16:23,810 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:16:23] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:26,299 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:26] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:19:26,367 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:26] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:19:26,406 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:26] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:31,856 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:31] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:34,121 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:34] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:19:47,587 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:47] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:49,397 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:49] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:19:49,458 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:49] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:19:49,535 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:49] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:58,342 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:58] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:19:58,368 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:58] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:19:59,304 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:59] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:19:59,377 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:59] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:19:59,449 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:19:59] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:20:13,294 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:20:13] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:20:53,218 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:20:53,273 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:21:02,961 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 19:21:02,961 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 19:21:02,964 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:21:03,644 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:21:03,670 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:21:05,182 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:05] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:21:05,250 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:05] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:21:05,298 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:05] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:21:25,472 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:25] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:21:25,533 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:25] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:21:25,571 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:25] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:21:29,384 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:29] "GET /2fa?name=a&email=123 HTTP/1.1" 200 -
+2025-04-08 19:21:29,488 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:21:29] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:22:54,926 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:22:54,979 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:22:55,659 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:22:55,686 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:23:34,998 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:34] "GET /2fa?name=a&email=123 HTTP/1.1" 200 -
+2025-04-08 19:23:35,072 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:35] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:23:35,125 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:35] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:23:50,797 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:50] "GET /2fa?name=a&email=123 HTTP/1.1" 200 -
+2025-04-08 19:23:50,857 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:50] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:23:50,898 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:23:50] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:24:11,515 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:11] "GET /2fa?name=a&email=123 HTTP/1.1" 200 -
+2025-04-08 19:24:11,585 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:11] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:24:11,639 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:11] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:24:19,876 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:19] "POST /verify-2fa HTTP/1.1" 200 -
+2025-04-08 19:24:19,978 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:19] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:24:25,048 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:25] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:24:31,825 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:31] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:24:31,910 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:31] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:24:31,947 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:31] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:24:36,742 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:24:36] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:25:55,472 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:25:55,529 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:25:58,093 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:25:58,118 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:26:29,159 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:26:29,274 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:31:45,998 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 19:31:45,998 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 19:31:46,001 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:31:47,116 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:31:47,142 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:32:00,484 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:00] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 19:32:00,500 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:00] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:32:00,573 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:00] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:32:00,633 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:00] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:32:05,980 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:05] "GET /register HTTP/1.1" 200 -
+2025-04-08 19:32:06,052 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:06] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:32:06,114 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:06] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:32:11,713 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:11] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-04-08 19:32:11,722 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:11] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:32:11,795 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:11] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:32:11,850 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:32:11] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:36:08,948 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:08] "GET /login HTTP/1.1" 200 -
+2025-04-08 19:36:09,020 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:09] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:36:09,059 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:09] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:36:12,732 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:12] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 19:36:12,809 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:12] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:36:12,871 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:36:12] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:38:42,235 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:42] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 19:38:42,307 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:42] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:38:42,348 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:42] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:38:57,273 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:57] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 19:38:57,338 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:57] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:38:57,389 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:38:57] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:39:42,076 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:39:42] "[31m[1mPOST /login HTTP/1.1[0m" 405 -
+2025-04-08 19:39:42,185 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:39:42] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:39:44,269 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:39:44] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:40:05,677 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:40:05] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 19:40:05,744 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:40:05] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 19:40:05,787 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 19:40:05] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 19:40:57,938 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:40:58,029 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:40:59,189 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:40:59,216 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:45:29,961 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:45:30,056 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:45:31,190 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:45:31,216 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:46:28,913 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:46:28,998 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:46:30,122 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:46:30,148 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:46:49,504 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:46:49,596 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:46:50,721 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:46:50,747 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:48:22,653 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:48:22,745 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:48:23,873 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:48:23,899 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:48:29,358 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:48:29,511 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:48:30,669 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:48:30,695 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:48:32,951 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:48:33,046 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 19:48:34,159 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 19:48:34,184 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 19:51:57,696 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 19:51:57,791 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:07:25,153 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 20:07:25,154 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 20:07:25,156 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:07:27,382 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:07:27,410 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:07:28,889 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:28] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:07:32,250 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:32] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 20:07:32,350 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:32] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:07:41,088 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:41] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:07:41,122 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:41] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 20:07:42,198 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:42] "GET /login HTTP/1.1" 200 -
+2025-04-08 20:07:42,259 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:42] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 20:07:42,339 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:42] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:07:44,911 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:44] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 20:07:45,058 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:07:45] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:08:08,701 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:08:08,796 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:08:11,025 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:08:11,051 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:08:30,727 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:08:30,835 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:08:33,084 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:08:33,109 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:08:39,430 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:08:39] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:08:39,623 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:08:39] "GET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-08 20:08:39,626 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:08:39] "GET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-08 20:08:39,750 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:08:39] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:08:39,790 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:08:39] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-08 20:10:44,550 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:10:44] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:10:44,625 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:10:44] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:10:44,629 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:10:44] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:10:44,658 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:10:44] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=zyi85s1AvQoj6WCGznVu HTTP/1.1[0m" 304 -
+2025-04-08 20:10:44,696 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:10:44] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:11:03,370 - werkzeug - INFO -  * To enable the debugger you need to enter the security pin:
+2025-04-08 20:11:03,370 - werkzeug - INFO -  * Debugger pin code: 174-456-576
+2025-04-08 20:11:03,370 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:11:03] "GET /2fa?__debugger__=yes&cmd=printpin&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:11:15,589 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:11:15] "GET /2fa?__debugger__=yes&cmd=pinauth&pin=174456576&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:11:41,194 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:11:41] "GET /2fa?__debugger__=yes&cmd=requests.get('http://localhost:8081/token',+json%3D{'user_id':1,+'password':+'The+sun+in+the+sky+is+red,+The+sun+in+my+heart+is+Mao+Zedong!'})&frm=2248902648464&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:11:44,848 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:11:44] "GET /2fa?__debugger__=yes&cmd=requests.get('http://localhost:8081/token',+json%3D{'user_id':1,+'password':+'The+sun+in+the+sky+is+red,+The+sun+in+my+heart+is+Mao+Zedong!'}).text&frm=2248902648464&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:11:54,813 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:11:54] "GET /2fa?__debugger__=yes&cmd=requests.post('http://localhost:8081/token',+json%3D{'user_id':1,+'password':+'The+sun+in+the+sky+is+red,+The+sun+in+my+heart+is+Mao+Zedong!'}).text&frm=2248902648464&s=zyi85s1AvQoj6WCGznVu HTTP/1.1" 200 -
+2025-04-08 20:12:18,614 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:12:18,711 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:12:22,584 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 20:12:22,585 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 20:12:22,587 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:12:24,821 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:12:24,848 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:12:24,981 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:12:24] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:12:25,189 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:12:25] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:12:25,190 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:12:25] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:12:25,227 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:12:25] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=56yayPSLNMECRYRt8Ikd HTTP/1.1" 200 -
+2025-04-08 20:12:25,260 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:12:25] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:13:37,581 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:13:37] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:13:37,645 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:13:37] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:13:37,647 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:13:37] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:13:37,684 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:13:37] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=56yayPSLNMECRYRt8Ikd HTTP/1.1[0m" 304 -
+2025-04-08 20:13:37,716 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:13:37] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:20:59,090 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:20:59] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:20:59,156 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:20:59] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:20:59,160 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:20:59] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:20:59,192 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:20:59] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=56yayPSLNMECRYRt8Ikd HTTP/1.1[0m" 304 -
+2025-04-08 20:20:59,220 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:20:59] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:21:15,445 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:15] "GET /2fa?__debugger__=yes&cmd=requests.post('http://localhost:8081/token',+json%3D{'user_id':1,+'password':+'The+sun+in+the+sky+is+red,+The+sun+in+my+heart+is+Mao+Zedong!'}).text&frm=2959225600848&s=56yayPSLNMECRYRt8Ikd HTTP/1.1" 200 -
+2025-04-08 20:21:31,920 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:21:32,111 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:21:34,425 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:21:34,450 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:21:35,897 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:35] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:21:36,107 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:36] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:21:36,108 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:36] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:21:36,217 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:36] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=KeeJY22YR7eP0zy5b8Cq HTTP/1.1" 200 -
+2025-04-08 20:21:36,247 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:21:36] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:22:31,488 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:31] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:22:31,563 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:31] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:22:31,566 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:31] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:22:31,600 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:31] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=KeeJY22YR7eP0zy5b8Cq HTTP/1.1[0m" 304 -
+2025-04-08 20:22:31,642 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:31] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:22:56,472 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:56] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:22:56,553 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:56] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:22:56,557 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:56] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:22:56,583 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:56] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=KeeJY22YR7eP0zy5b8Cq HTTP/1.1[0m" 304 -
+2025-04-08 20:22:56,611 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:22:56] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:24:11,554 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:24:11] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:24:11,618 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:24:11] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:24:11,627 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:24:11] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:24:11,642 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:24:11] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=KeeJY22YR7eP0zy5b8Cq HTTP/1.1[0m" 304 -
+2025-04-08 20:24:11,672 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:24:11] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:27:12,305 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:27:12] "[35m[1mGET /2fa?tg_id=123 HTTP/1.1[0m" 500 -
+2025-04-08 20:27:12,370 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:27:12] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 20:27:12,373 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:27:12] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 20:27:12,399 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:27:12] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=KeeJY22YR7eP0zy5b8Cq HTTP/1.1[0m" 304 -
+2025-04-08 20:27:12,424 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:27:12] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 20:29:04,766 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:04] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 20:29:04,833 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:04] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 20:29:04,874 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:04] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:29:14,880 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:29:15,017 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:29:31,573 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 20:29:31,573 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 20:29:31,576 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:29:33,835 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:29:33,861 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:29:35,967 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:35] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 20:29:36,027 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:36] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 20:29:36,066 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:36] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:29:41,308 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:41] "GET /2fa?tg_id=123 HTTP/1.1" 200 -
+2025-04-08 20:29:41,373 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:41] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 20:29:41,432 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 20:29:41] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 20:37:30,462 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:37:30,568 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:37:32,801 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:37:32,827 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:38:41,225 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:38:41,330 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:38:43,566 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:38:43,591 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:39:02,169 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:39:02,276 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:39:04,534 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:39:04,560 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:40:08,676 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:40:08,792 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:40:11,049 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:40:11,075 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:41:27,063 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:41:27,178 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:41:29,452 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:41:29,478 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:42:30,418 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:42:30,544 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:42:32,835 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:42:32,863 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:44:59,295 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:44:59,413 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:45:01,677 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:45:01,704 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:45:34,402 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:45:34,507 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:45:36,776 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:45:36,801 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:45:51,040 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\tokenman.py', reloading
+2025-04-08 20:45:51,156 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 20:45:53,455 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 20:45:53,480 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 20:51:50,088 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 20:51:50,197 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:20:38,804 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 21:20:38,805 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 21:20:38,808 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:20:41,057 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:20:41,083 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:20:41,184 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:41] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 21:20:41,205 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:41] "GET /login HTTP/1.1" 200 -
+2025-04-08 21:20:41,393 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:41] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:20:41,585 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:41] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:20:44,373 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:44] "GET /register HTTP/1.1" 200 -
+2025-04-08 21:20:44,447 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:44] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:20:44,502 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:20:44] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:26:38,479 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:38] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-04-08 21:26:38,488 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:38] "GET /login HTTP/1.1" 200 -
+2025-04-08 21:26:38,561 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:38] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:26:38,597 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:38] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:26:42,309 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:42] "[35m[1mGET /2fa?tg_id=1078149470 HTTP/1.1[0m" 500 -
+2025-04-08 21:26:42,496 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:42] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 21:26:42,513 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:42] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 21:26:42,613 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:42] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=Cp5KXsIAakMhgarQ3hs8 HTTP/1.1" 200 -
+2025-04-08 21:26:42,646 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:26:42] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 21:27:01,496 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:27:01,599 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:27:03,872 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:27:03,900 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:27:10,859 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:27:10] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:27:10,920 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:27:10] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:27:10,972 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:27:10] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:28:33,241 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:33] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:28:33,302 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:33] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:28:33,348 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:33] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:28:49,758 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:49] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-08 21:28:49,950 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:49] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 21:28:49,952 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:49] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 21:28:50,024 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:50] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=VAgCexIcTpnQkPV63fX6 HTTP/1.1" 200 -
+2025-04-08 21:28:50,053 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:28:50] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 21:29:19,443 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:29:19,564 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:29:33,466 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 21:29:33,466 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 21:29:33,469 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:29:35,694 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:29:35,720 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:29:35,827 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:35] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-08 21:29:36,039 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:36] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 21:29:36,040 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:36] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 21:29:36,139 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:36] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=nkMqwle8Y8b27OtkUHdu HTTP/1.1" 200 -
+2025-04-08 21:29:36,165 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:36] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 21:29:45,623 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:29:45,720 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:29:47,995 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:29:48,020 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:29:48,118 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:48] "POST /login HTTP/1.1" 200 -
+2025-04-08 21:29:48,209 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:48] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:29:52,892 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:52] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:29:56,299 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:56] "POST /login HTTP/1.1" 200 -
+2025-04-08 21:29:56,395 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:29:56] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:30:31,481 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:30:31,583 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:30:33,812 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:30:33,838 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:30:33,944 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:33] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-08 21:30:34,139 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:34] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 21:30:34,143 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:34] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 21:30:34,164 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:34] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=G7B3nVo1oTCE0an7jbPz HTTP/1.1" 200 -
+2025-04-08 21:30:34,271 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:34] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 21:30:51,322 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:30:51,425 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:30:53,649 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:30:53,675 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:30:53,775 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:53] "POST /login HTTP/1.1" 200 -
+2025-04-08 21:30:53,856 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:30:53] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:31:01,092 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:01] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:31:02,340 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:02] "POST /login HTTP/1.1" 200 -
+2025-04-08 21:31:02,436 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:02] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:31:11,145 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:11] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:31:11,173 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:11] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-08 21:31:13,629 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:13] "POST /login HTTP/1.1" 200 -
+2025-04-08 21:31:13,776 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:13] "GET /favicon.ico HTTP/1.1" 200 -
+2025-04-08 21:31:37,204 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:31:37,306 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:31:39,531 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:31:39,558 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:31:40,384 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:40] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2025-04-08 21:31:40,516 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:31:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-08 21:35:30,410 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:35:30] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:35:30,485 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:35:30] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:35:33,310 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:35:33] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:36:20,437 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:36:20] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:36:20,446 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:36:20] "[31m[1mGET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз. HTTP/1.1[0m" 400 -
+2025-04-08 21:37:15,364 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:37:15,474 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:37:17,726 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:37:17,753 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:37:21,144 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:37:21,258 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:37:23,491 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:37:23,518 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:37:23,618 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:23] "[31m[1mGET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз. HTTP/1.1[0m" 400 -
+2025-04-08 21:37:25,812 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:37:26,128 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:26] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:37:26,217 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:26] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:37:42,967 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:37:43,241 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:43] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:37:43,296 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:37:43] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:38:53,599 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:38:53,702 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:38:55,964 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:38:55,989 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:38:59,033 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:38:59] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:38:59,108 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:38:59] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:39:11,190 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:39:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:39:11,221 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:39:11] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:39:11,294 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:39:11] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:40:26,640 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:40:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:40:27,077 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:40:27] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:40:27,142 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:40:27] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:41:18,847 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:41:19,237 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:19] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:41:19,315 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:19] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:41:30,590 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:41:30,621 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:30] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:41:30,680 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:30] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:41:54,730 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:54] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:41:54,763 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:54] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:41:54,825 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:41:54] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:42:39,427 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 21:42:39,429 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 21:42:39,456 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:44:49,998 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 21:44:49,999 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 21:44:50,001 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:44:52,258 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:44:52,283 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:44:56,799 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:44:57,003 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:44:59,246 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:44:59,271 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:45:00,503 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:45:00,604 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:45:02,840 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:45:02,866 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:45:04,574 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:45:04,986 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:04] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:45:05,063 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:05] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:45:33,747 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:45:34,074 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:34] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:45:34,145 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:45:34] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:46:27,139 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:46:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:46:27,242 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:46:27] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:46:27,309 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:46:27] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:48:00,610 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:48:00,729 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:48:02,964 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:48:02,990 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:48:28,532 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:48:28] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:48:28,610 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:48:28] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:48:38,941 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:48:38] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:48:38,972 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:48:38] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:48:39,039 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:48:39] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:49:03,059 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:03] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 21:49:03,069 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:03] "GET /login HTTP/1.1" 200 -
+2025-04-08 21:49:03,133 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:03] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:49:09,738 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:09] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:49:09,809 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:09] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:49:34,826 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:49:34,860 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:34] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:49:34,925 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:49:34] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:50:47,278 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:50:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 21:50:47,571 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:50:47] "GET /2fa?message=неправильный%20код,%20попробуйте%20ещё%20раз.&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:50:47,648 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:50:47] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:51:22,434 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:51:22,526 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:51:24,779 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:51:24,804 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:52:10,468 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:52:10,560 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:52:12,784 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:52:12,810 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:53:25,532 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:53:25,647 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:53:27,876 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:53:27,902 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:56:06,108 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 21:56:06,214 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:57:04,394 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 21:57:04,394 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 21:57:04,397 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 21:57:06,624 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 21:57:06,651 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 21:57:06,758 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:57:06] "GET /login HTTP/1.1" 200 -
+2025-04-08 21:57:06,926 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:57:06] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:57:16,195 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:57:16] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:57:16,263 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:57:16] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:59:15,026 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:59:15] "GET /login HTTP/1.1" 200 -
+2025-04-08 21:59:15,083 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:59:15] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 21:59:17,245 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:59:17] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 21:59:17,308 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 21:59:17] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:00:53,176 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:00:53] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:00:53,251 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:00:53] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:01:56,303 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:01:56] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:01:56,387 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:01:56] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:02:52,442 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:02:52] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:02:52,516 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:02:52] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:03:53,469 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:03:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:03:53,478 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:03:53] "[31m[1mGET /2fa?wrong_code=True HTTP/1.1[0m" 400 -
+2025-04-08 22:04:31,804 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:04:31,904 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:04:34,379 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:04:34,406 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:04:46,940 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:04:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:04:46,953 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:04:46] "[31m[1mGET /2fa?wrong_code=True HTTP/1.1[0m" 400 -
+2025-04-08 22:06:13,128 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:06:13,251 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:06:15,570 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:06:15,596 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:06:17,472 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:17] "[35m[1mGET /2fa?tg_id=1078149470 HTTP/1.1[0m" 500 -
+2025-04-08 22:06:17,696 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:17] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-08 22:06:17,707 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:17] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-08 22:06:17,793 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:17] "GET /2fa?__debugger__=yes&cmd=resource&f=console.png&s=UfWw9xC9AxcwDp48Wb7r HTTP/1.1" 200 -
+2025-04-08 22:06:17,824 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:17] "[36mGET /2fa?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-08 22:06:25,126 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:25] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:06:25,189 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:25] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:06:45,634 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:06:45,643 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:06:45] "[31m[1mGET /2fa?wrong_code=True HTTP/1.1[0m" 400 -
+2025-04-08 22:07:05,564 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:07:05,662 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:07:07,886 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:07:07,912 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:08:27,218 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:08:27,320 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:08:29,607 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:08:29,633 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:08:42,703 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:08:42] "[31m[1mGET /2fa?wrong_code=True HTTP/1.1[0m" 400 -
+2025-04-08 22:09:14,164 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:09:14,276 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:09:18,139 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.0.2:5000
+2025-04-08 22:09:18,139 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-08 22:09:18,142 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:09:20,356 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:09:20,382 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:09:20,479 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:09:20] "[31m[1mGET /2fa?wrong_code=True HTTP/1.1[0m" 400 -
+2025-04-08 22:09:47,619 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:09:47,729 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:09:49,954 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:09:49,979 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:09:51,379 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:09:51] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:09:51,457 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:09:51] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:10:02,800 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:10:02,810 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:02] "GET /2fa?wrong_code=True&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:10:02,874 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:02] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:10:40,394 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:40] "GET /2fa?wrong_code=True&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:10:40,460 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:40] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:10:51,545 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:10:51,555 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:51] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 22:10:51,566 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:51] "GET /login HTTP/1.1" 200 -
+2025-04-08 22:10:51,630 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:10:51] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:11:08,102 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:11:08] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:12:17,505 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:12:17,617 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:12:19,914 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:12:19,940 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:12:24,137 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:24] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:12:24,216 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:24] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:12:37,857 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:12:37,868 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:37] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 22:12:37,881 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:37] "GET /login HTTP/1.1" 200 -
+2025-04-08 22:12:37,948 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:37] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:12:41,380 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:12:41] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:13:34,762 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:13:34,867 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:13:37,165 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:13:37,192 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:13:48,448 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:48] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:13:48,554 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:48] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:13:58,751 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:58] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-08 22:13:58,999 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:58] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-08 22:13:58,999 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:58] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-08 22:13:59,078 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:59] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=gSqEFo2r7RAj5SKu2JM2 HTTP/1.1" 200 -
+2025-04-08 22:13:59,129 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:13:59] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-08 22:14:13,054 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:14:13,150 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:14:15,386 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:14:15,412 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:14:15,527 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:14:15,539 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:15] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 22:14:15,559 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:15] "GET /login HTTP/1.1" 200 -
+2025-04-08 22:14:15,618 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:15] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:14:19,424 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:19] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:14:19,485 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:19] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:14:26,883 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:14:26,893 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:26] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 22:14:26,903 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:26] "GET /login HTTP/1.1" 200 -
+2025-04-08 22:14:26,972 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:26] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:14:30,727 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:14:30] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:15:16,228 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\main.py', reloading
+2025-04-08 22:15:16,331 - werkzeug - INFO -  * Restarting with stat
+2025-04-08 22:15:18,557 - werkzeug - WARNING -  * Debugger is active!
+2025-04-08 22:15:18,584 - werkzeug - INFO -  * Debugger PIN: 174-456-576
+2025-04-08 22:15:21,849 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:21] "GET /2fa?tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:15:21,968 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:21] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:15:29,476 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:15:29,486 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:29] "GET /2fa?wrong_code=True&tg_id=1078149470 HTTP/1.1" 200 -
+2025-04-08 22:15:29,593 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:29] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-04-08 22:15:37,139 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-04-08 22:15:37,156 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:37] "GET / HTTP/1.1" 200 -
+2025-04-08 22:15:43,192 - werkzeug - INFO - 127.0.0.1 - - [08/Apr/2025 22:15:43] "GET / HTTP/1.1" 200 -
+2025-04-08 23:11:10,199 - werkzeug - INFO -  * Detected change in 'C:\\Users\\cabup\\source\\repos\\telefront\\models.py', reloading
+2025-04-08 23:11:10,409 - werkzeug - INFO -  * Restarting with stat
