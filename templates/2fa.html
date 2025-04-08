@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Двухфакторная аутентификация{% endblock %}
+
+{% block header %}Подтвердите вход{% endblock %}
+
+{% block content %}
+    <div class="auth-message">
+        <p>Мы отправили 6-значный код на ваш telegram, проверьте бота <a href="https://t.me/verificatior_bot">@verificatior_bot</a></p>
+        <p class="hint">Введите код для завершения входа</p>
+    </div>
+
+    <form action="/login" method="POST">
+        <div class="code-inputs">
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" autofocus>
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric">
+        </div>
+        <input type="hidden" id="tg_id" name="tg_id">
+        <input type="hidden" id="full-code" name="code">
+
+        <button type="submit" class="verify-button">Подтвердить</button>
+
+        <div class="resend-section">
+            <p>Не получили код? <a href="#" id="resend-code">Отправить снова</a></p>
+            <p class="timer">Отправить повторно через <span id="countdown">60</span> сек.</p>
+            {% if wrong_code%}
+            <p class="error-message"> Введён неправильный код, попробуйте ещё раз</p>
+            {% endif %}
+        </div>
+    </form>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('tg_id').value = urlParams.get('tg_id');
+    document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('.code-inputs input');
+    const fullCodeInput = document.getElementById('full-code');
+    const form = document.querySelector('form');
+    const resendLink = document.getElementById('resend-code');
+    const countdownEl = document.getElementById('countdown');
+
+    // Обработка ввода кода
+    inputs.forEach((input, index) => {
+        // Переход к следующему полю при вводе
+        input.addEventListener('input', function() {
+            if (this.value.length === 1) {
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            }
+
+            updateFullCode();
+        });
+
+        // Обработка удаления символов
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && this.value.length === 0) {
+                if (index > 0) {
+                    inputs[index - 1].focus();
+                }
+            }
+        });
+    });
+
+    // Обновление скрытого поля с полным кодом
+    function updateFullCode() {
+        let code = '';
+        inputs.forEach(input => {
+            code += input.value;
+        });
+        fullCodeInput.value = code;
+    }
+
+    // Таймер для повторной отправки кода
+    let timeLeft = 60;
+    const countdown = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            document.querySelector('.timer').style.display = 'none';
+            resendLink.style.display = 'inline';
+        }
+    }, 1000);
+
+    // Повторная отправка кода
+    resendLink.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Здесь должен быть AJAX-запрос для повторной отправки кода
+        alert('Новый код отправлен!');
+
+        // Сброс таймера
+        timeLeft = 60;
+        countdownEl.textContent = timeLeft;
+        document.querySelector('.timer').style.display = 'block';
+        this.style.display = 'none';
+
+        const newCountdown = setInterval(() => {
+            timeLeft--;
+            countdownEl.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(newCountdown);
+                document.querySelector('.timer').style.display = 'none';
+                resendLink.style.display = 'inline';
+            }
+        }, 1000);
+    });
+
+    // Валидация формы
+    form.addEventListener('submit', function(e) {
+        if (fullCodeInput.value.length !== 6) {
+            e.preventDefault();
+            inputs.forEach(input => {
+                input.classList.add('error');
+                setTimeout(() => {
+                    input.classList.remove('error');
+                }, 500);
+            });
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block footer %}
+    <div></div>
+{% endblock %}

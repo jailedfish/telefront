@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: #3a7bc8;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+}
+        /* 2FA Specific Styles */
+.auth-message {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-message p {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.auth-message .hint {
+    font-size: 14px;
+    color: #888;
+}
+
+.code-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.code-inputs input {
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    padding: 0;
+}
+
+.verify-button {
+    margin-top: 10px;
+}
+
+.resend-section {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.resend-section a {
+    color: #4a90e2;
+    cursor: pointer;
+}
+
+.timer {
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Ошибка при вводе */
+.code-inputs input.error {
+    border-color: #e74c3c;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+    </style>
+    <style>
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+
+        .notification.hidden {
+            display: none;
+        }
+
+        .notification.error {
+            background-color: #f44336;
+        }
+
+        .notification.warning {
+            background-color: #ff9800;
+        }
+
+        .notification.info {
+            background-color: #2196F3;
+        }
+
+        .close-btn {
+            margin-left: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @keyframes fadeIn {
+            from {top: 0; opacity: 0;}
+            to {top: 20px; opacity: 1;}
+        }
+
+        @keyframes fadeOut {
+            from {top: 20px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
+
+</head>
+<body>
+
+    {% if msg_text %}
+    <div class="notification {{ ntf_type }}">
+        <span>{{ msg_text }}</span>
+        <span class="close-btn">&times;</span>
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notification = document.querySelector('.notification');
+            const closeBtn = document.querySelector('.close-btn');
+            const showBtn = document.getElementById('show-notification');
+
+            // Функция для закрытия уведомления
+            function closeNotification() {
+                notification.style.animation = 'fadeOut 0.5s';
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 500);
+            }
+
+            // Закрытие по клику на крестик
+            closeBtn.addEventListener('click', closeNotification);
+
+            // Автоматическое закрытие через 5 секунд
+            setTimeout(closeNotification, 5000);
+
+            // Показать уведомление снова (для демонстрации)
+            showBtn.addEventListener('click', function() {
+                notification.classList.remove('hidden');
+                notification.style.animation = 'fadeIn 0.5s';
+                setTimeout(closeNotification, 5000);
+            });
+
+            // Закрытие при клике вне уведомления
+            document.addEventListener('click', function(event) {
+                if (!notification.contains(event.target) {
+                    closeNotification();
+                }
+            });
+        });
+    </script>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>{% block header %}{% endblock %}</h1>
+        </div>
+
+        <div class="auth-form">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="auth-footer">
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+    <div id="extends_from_base"></div>
+</body>
+</html>

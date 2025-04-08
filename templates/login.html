@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Вход в систему{% endblock %}
+
+{% block header %}Вход в систему{% endblock %}
+
+{% block content %}
+    <form action="/2fa" method="GET">
+        <div class="form-group">
+            <label for="telegram_id">Telegram id</label>
+            <input type="number" id="telegram_id" name="tg_id" required>
+        </div>
+
+        <button type="submit">Войти</button>
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+    <p><a href="/forgot-password">Забыли пароль?</a></p>
+{% endblock %}

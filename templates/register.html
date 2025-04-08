@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block header %}Создать аккаунт{% endblock %}
+
+{% block content %}
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="telegram_id">Telegram id*</label>
+            <input type="number" id="telegram_id" name="tg_id"  required>
+        </div>
+        
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <p>Уже есть аккаунт? <a href="/login">Войти</a></p>
+    <p>* для получения своего id зайдите в бота <a href="https://t.me/verificatior_bot">@verificatior_bot</a></p>
+{% endblock %}
