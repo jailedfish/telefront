@@ -1,0 +1,955 @@
+Initializing tunnel client...
+[CLIENT] Starting Http tunnel...
+[CLIENT] Circuit Breaker DISABLED (backward compatible mode)
+[CLIENT] Control-plane: tunnel4.com:12002
+[CLIENT] Backend: HTTP → localhost:8181
+[CLIENT] Pool size: 4 connection(s)
+[CLIENT RECONNECT] Step 1: Connecting to TunnelServer (control-plane)...
+[CLIENT RECONNECT] Step 1: TCP connected to TunnelServer
+[CLIENT RECONNECT] Step 2: Performing TLS handshake...
+[CLIENT] Control-plane TLS established
+[CLIENT RECONNECT] Step 2: TLS handshake complete
+[CLIENT RECONNECT] Step 3: Sending handshake to TunnelServer (protocol=Http)...
+[CLIENT PHASE7] New tunnel mode: server will assign TunnelId
+[CLIENT LICENSE] License specified: e9f645f75f5e4a3597f339295f142473 (ForceReplace=False)
+[CLIENT RECONNECT] Step 3: Waiting for SessionNegotiationResponse...
+[DIAGNOSTIC] Received frame: Type=Handshake, PayloadSize=2454 bytes
+[DIAGNOSTIC] Raw payload preview (first 500 bytes): {"AvailableLicenses":[{"LicenseId":"e9f645f75f5e4a3597f339295f142473","InternalId":"019e1916-bf72-7fc8-97f7-d5a98b135178","Plan":"Free","Endpoint":"6d718f83-d0da-40a9-822d-ff00b4c6949b-e1.tunnel4.com","IsPaid":false,"TunnelStatus":1,"IsDefault":true}],"RejectedLicenses":[],"DiscoveryErrorCode":0,"DiscoveryErrorMessage":null,"TunnelMetadata":{"TunnelId":"713eb1c7-3124-4f60-8f2f-e8818d8c3ff7","SessionId":"902d0f6c-a249-453c-a264-9acef7acac49","LicenseId":"019e1916-bf72-7fc8-97f7-d5a98b135178","Pro
+[DIAGNOSTIC] Attempting to deserialize handshake response...
+[DIAGNOSTIC] Deserialization SUCCESS!
+[CLIENT RECONNECT] Step 3: Session negotiation complete. SessionId: 902d0f6c-a249-453c-a264-9acef7acac49
+[CLIENT PHASE7] TunnelId: 713eb1c7-3124-4f60-8f2f-e8818d8c3ff7
+[CLIENT PHASE7] LicenseId: 019e1916-bf72-7fc8-97f7-d5a98b135178
+[CLIENT DEBUG] TunnelHost from server: '' (Protocol: Http)
+[CLIENT BUG503] Health check enabled: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/.well-known/xtunnel/http/health
+[CLIENT PHASE7] 🌐 Public URL: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+[CLIENT PHASE7] Aliases (2):
+[CLIENT PHASE7]   - UuidSubdomain: 6d718f83-d0da-40a9-822d-ff00b4c6949b-e1
+[CLIENT PHASE7]   - UuidSubdomain: 6d718f83-d0da-40a9-822d-ff00b4c6949b
+[CLIENT] Data-plane: Tls://:
+[CLIENT] Token expires at (UTC): 2026-05-12T21:07:21.0159991+00:00
+[CLIENT RECONNECT] Step 4: Creating connection pool (size=4)...
+[CLIENT] 📝 File logging enabled: /tmp/xtunnel-debug.log (level=Error)
+[POOL] 🔧 Created pool with size=4
+[CLIENT] Connection mode: BOOTSTRAP (HAProxy-based ProxyEntry discovery)
+[BOOTSTRAP] Calling bootstrap endpoint: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/.well-known/xtunnel/http/bootstrap
+[BOOTSTRAP] Public host for auth: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+[BOOTSTRAP] ProxyEntry endpoint: tunnel4.com:12301
+[BOOTSTRAP] Token TTL: 300 seconds
+[CLIENT RECONNECT] Step 4: Connecting 4 connection(s) to ProxyEntry...
+[CONN-2] BOOTSTRAP AUTH SUCCESS
+[CONN-2] CONNECTED to tunnel4.com:12301 (Session=902d0f6c-a249-453c-a264-9acef7acac49, PoolIndex=2/4)
+[CONN-1] BOOTSTRAP AUTH SUCCESS
+[CONN-1] CONNECTED to tunnel4.com:12301 (Session=902d0f6c-a249-453c-a264-9acef7acac49, PoolIndex=1/4)
+[CONN-0] BOOTSTRAP AUTH SUCCESS
+[CONN-0] CONNECTED to tunnel4.com:12301 (Session=902d0f6c-a249-453c-a264-9acef7acac49, PoolIndex=0/4)
+[CONN-3] BOOTSTRAP AUTH SUCCESS
+[CONN-3] CONNECTED to tunnel4.com:12301 (Session=902d0f6c-a249-453c-a264-9acef7acac49, PoolIndex=3/4)
+[POOL] All 4 connections connected successfully
+[CLIENT RECONNECT] Step 4: All 4 connection(s) connected to ProxyEntry
+[CLIENT RECONNECT] Step 5: Starting background loops for all connections...
+[CLIENT RECONNECT] Step 5: All background loops started
+[CLIENT] Full reconnect sequence complete. Client ready.
+[CLIENT] State: Connected (Http)
+[CLIENT] Started 200 backend workers
+[CLIENT ProcessLoop] Started
+[HEALTH] Health check loop started (interval: 30s)
+[WORKER-1] Started
+[WORKER-0] Started
+[WORKER-2] Started
+[WORKER-3] Started
+[WORKER-4] Started
+[WORKER-5] Started
+[WORKER-6] Started
+[WORKER-7] Started
+[WORKER-8] Started
+[WORKER-9] Started
+[WORKER-10] Started
+[WORKER-11] Started
+[WORKER-12] Started
+[WORKER-13] Started
+[WORKER-14] Started
+[WORKER-15] Started
+[WORKER-16] Started
+[WORKER-17] Started
+[WORKER-18] Started
+[WORKER-19] Started
+[WORKER-20] Started
+[WORKER-21] Started
+[WORKER-22] Started
+[WORKER-23] Started
+[WORKER-24] Started
+[WORKER-25] Started
+[WORKER-26] Started
+[WORKER-27] Started
+[WORKER-28] Started
+[WORKER-29] Started
+[WORKER-30] Started
+[WORKER-31] Started
+[WORKER-32] Started
+[WORKER-33] Started
+[WORKER-34] Started
+[WORKER-35] Started
+[WORKER-36] Started
+[WORKER-37] Started
+[WORKER-38] Started
+[WORKER-39] Started
+[WORKER-40] Started
+[WORKER-41] Started
+[WORKER-42] Started
+[WORKER-43] Started
+[WORKER-44] Started
+[WORKER-45] Started
+[WORKER-46] Started
+[WORKER-47] Started
+[WORKER-48] Started
+[WORKER-199] Started
+[WORKER-49] Started
+[WORKER-198] Started
+[WORKER-50] Started
+[WORKER-197] Started
+[WORKER-196] Started
+[WORKER-51] Started
+[WORKER-195] Started
+[WORKER-52] Started
+[WORKER-194] Started
+[WORKER-53] Started
+[WORKER-193] Started
+[WORKER-54] Started
+[WORKER-192] Started
+[WORKER-55] Started
+[WORKER-191] Started
+[WORKER-56] Started
+[WORKER-190] Started
+[WORKER-57] Started
+[WORKER-189] Started
+[WORKER-58] Started
+[WORKER-188] Started
+[WORKER-59] Started
+[WORKER-187] Started
+[WORKER-60] Started
+[WORKER-186] Started
+[WORKER-61] Started
+[WORKER-185] Started
+[WORKER-62] Started
+[WORKER-184] Started
+[WORKER-63] Started
+[WORKER-183] Started
+[WORKER-64] Started
+[WORKER-182] Started
+[WORKER-181] Started
+[WORKER-65] Started
+[WORKER-180] Started
+[WORKER-66] Started
+[WORKER-179] Started
+[WORKER-67] Started
+[WORKER-178] Started
+[WORKER-68] Started
+[WORKER-177] Started
+[WORKER-69] Started
+[WORKER-176] Started
+[WORKER-70] Started
+[WORKER-175] Started
+[WORKER-71] Started
+[WORKER-174] Started
+[WORKER-72] Started
+[WORKER-173] Started
+[WORKER-73] Started
+[WORKER-172] Started
+[WORKER-74] Started
+[WORKER-171] Started
+[WORKER-75] Started
+[WORKER-170] Started
+[WORKER-76] Started
+[WORKER-169] Started
+[WORKER-77] Started
+[WORKER-168] Started
+[WORKER-78] Started
+[WORKER-167] Started
+[WORKER-79] Started
+[WORKER-166] Started
+[WORKER-80] Started
+[WORKER-165] Started
+[WORKER-81] Started
+[WORKER-164] Started
+[WORKER-82] Started
+[WORKER-163] Started
+[WORKER-83] Started
+[WORKER-162] Started
+[WORKER-84] Started
+[WORKER-161] Started
+[WORKER-160] Started
+[WORKER-85] Started
+[WORKER-159] Started
+[WORKER-86] Started
+[WORKER-158] Started
+[WORKER-157] Started
+[WORKER-87] Started
+[WORKER-156] Started
+[WORKER-155] Started
+[WORKER-88] Started
+[WORKER-154] Started
+[WORKER-153] Started
+[WORKER-89] Started
+[WORKER-152] Started
+[WORKER-90] Started
+[WORKER-151] Started
+[WORKER-91] Started
+[WORKER-150] Started
+[WORKER-92] Started
+[WORKER-149] Started
+[WORKER-93] Started
+[WORKER-148] Started
+[WORKER-147] Started
+[WORKER-94] Started
+[WORKER-146] Started
+[WORKER-95] Started
+[WORKER-145] Started
+[WORKER-96] Started
+[WORKER-144] Started
+[WORKER-97] Started
+[WORKER-143] Started
+[WORKER-98] Started
+[WORKER-142] Started
+[WORKER-99] Started
+[WORKER-141] Started
+[WORKER-100] Started
+[WORKER-140] Started
+[WORKER-101] Started
+[WORKER-139] Started
+[WORKER-102] Started
+[WORKER-138] Started
+[WORKER-103] Started
+[WORKER-137] Started
+[WORKER-104] Started
+[WORKER-136] Started
+[WORKER-105] Started
+[WORKER-135] Started
+[WORKER-106] Started
+[WORKER-134] Started
+[WORKER-107] Started
+[WORKER-133] Started
+[WORKER-108] Started
+[WORKER-132] Started
+[WORKER-109] Started
+[WORKER-131] Started
+[WORKER-110] Started
+[WORKER-130] Started
+[WORKER-111] Started
+[WORKER-129] Started
+[WORKER-112] Started
+[WORKER-128] Started
+[WORKER-113] Started
+[WORKER-127] Started
+[WORKER-114] Started
+[WORKER-126] Started
+[WORKER-115] Started
+[WORKER-125] Started
+[WORKER-116] Started
+[WORKER-124] Started
+[WORKER-123] Started
+[WORKER-117] Started
+[WORKER-122] Started
+[WORKER-118] Started
+[WORKER-121] Started
+[WORKER-120] Started
+[WORKER-119] Started
+[CLIENT] Queued: Heartbeat stream=8c731470-5e89-42d9-9812-b032ff778826
+[CLIENT] Queued: Heartbeat stream=d0e838a6-a51a-49fa-ba42-66b8a23550c5
+[CLIENT] Queued: Heartbeat stream=c70bdf62-e22e-4772-ad77-683214ab13be
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=7c4f066a-0a7f-480d-922b-a6449d4ce239
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: OpenRequestStream stream=628bb938-74e7-4d35-8a85-10538ae2d76e
+[CLIENT] Queued: DataRequestStream stream=628bb938-74e7-4d35-8a85-10538ae2d76e
+[CLIENT] Queued: CloseRequestStream stream=628bb938-74e7-4d35-8a85-10538ae2d76e
+[CLIENT CloseRequest] Starting processing stream=628bb938-74e7-4d35-8a85-10538ae2d76e, queueSize=0
+[CLIENT] Starting backend request: Stream=628bb938-74e7-4d35-8a85-10538ae2d76e, Request=GET / HTTP/1.1
+[PROXY] Raw request size: 694 bytes
+[PROXY] Headers end at byte offset: 690
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET / HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: en-US,en;q=0.5
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+priority: u=0, i
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /
+[PROXY] Response: 302 FOUND, Content-Length=199, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=199 bytes. Declared Content-Length=199
+[CLIENT] Backend request completed: Stream=628bb938-74e7-4d35-8a85-10538ae2d76e
+[CLIENT CloseRequest] Completed stream=628bb938-74e7-4d35-8a85-10538ae2d76e in 19ms
+[CLIENT] Queued: OpenRequestStream stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64
+[CLIENT] Queued: DataRequestStream stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64
+[CLIENT] Queued: CloseRequestStream stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64
+[CLIENT CloseRequest] Starting processing stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64, queueSize=0
+[CLIENT] Starting backend request: Stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64, Request=GET /login HTTP/1.1
+[PROXY] Raw request size: 699 bytes
+[PROXY] Headers end at byte offset: 695
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /login HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: en-US,en;q=0.5
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+priority: u=0, i
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /login
+[PROXY] Response: 200 OK, Content-Length=6444, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=6444 bytes. Declared Content-Length=6444
+[CLIENT] Backend request completed: Stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64
+[CLIENT CloseRequest] Completed stream=0f33ecb5-ae4d-446f-a6bb-a922f6d5df64 in 9ms
+[CLIENT] Queued: OpenRequestStream stream=88a4ec70-1490-41dd-a204-89da16965d27
+[CLIENT] Queued: DataRequestStream stream=88a4ec70-1490-41dd-a204-89da16965d27
+[CLIENT] Queued: CloseRequestStream stream=88a4ec70-1490-41dd-a204-89da16965d27
+[CLIENT CloseRequest] Starting processing stream=88a4ec70-1490-41dd-a204-89da16965d27, queueSize=0
+[CLIENT] Starting backend request: Stream=88a4ec70-1490-41dd-a204-89da16965d27, Request=GET /static/style.css HTTP/1.1
+[PROXY] Raw request size: 688 bytes
+[PROXY] Headers end at byte offset: 684
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /static/style.css HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0
+accept: text/css,*/*;q=0.1
+accept-language: en-US,en;q=0.5
+accept-encoding: gzip, deflate, br, zstd
+referer: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/login
+sec-fetch-dest: style
+sec-fetch-mode: no-cors
+sec-fetch-site: same-origin
+priority: u=2
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /static/style.css
+[PROXY] Response: 404 NOT FOUND, Content-Length=1675, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=1675 bytes. Declared Content-Length=1675
+[CLIENT] Backend request completed: Stream=88a4ec70-1490-41dd-a204-89da16965d27
+[CLIENT CloseRequest] Completed stream=88a4ec70-1490-41dd-a204-89da16965d27 in 8ms
+[CLIENT] Queued: Heartbeat stream=e54052b9-69ad-4fc4-83fb-d8a7af64cdd3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=3f0c5614-d7cf-4158-8a14-926cb5b9dbd3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=ef682fb0-6f27-4cdd-b382-e3131c842f35
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=726ebaee-0151-4536-88fa-db7dc067a0c7
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=fa9e817a-c450-4626-9b8c-0d3f48b97e3f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=ab4fdf74-30c1-4cd6-8044-433f2aac345f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=8c16372f-8e11-4560-b6e2-5a0a1c6e7192
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=542ceea5-d788-4101-827d-db5603d91425
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=a3c3d0ae-8ff4-4b46-93d0-d36a26659e08
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=e12136b1-93ca-47e2-bff0-d1d4a3443abe
+[CLIENT] Queued: Heartbeat stream=f35b78f5-1e3a-48ae-9362-eb0b3113aaaf
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=2e7001f1-659f-4da3-9aa6-87a0690e207e
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d650b8f5-3c8c-4587-96b2-91d771aebc61
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=1162cc6f-f645-4636-b136-6dd9a2fe0478
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=15ba1acf-720d-4eb7-ae13-05d460796444
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=9dc619ae-f123-4de6-a547-20bf87709e2a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a50b3fd6-6f2d-4e0c-a9e0-74fb80ed389f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=596b1c84-ff1d-4810-9aa9-00054ee6696e
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a0538123-b5f3-4f4a-a71c-2aa1bc255797
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=8b6f794f-723b-455f-9b2e-7b52ad192fb9
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=437ea334-e838-4d4a-922e-c3afede12c6a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=717e4af0-7cf7-4f54-ac46-21a9f036c4d4
+[CLIENT] Queued: Heartbeat stream=1dcddb75-7832-4936-b0c5-2b3c8295da26
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=040fee0e-e78b-4c6a-a42e-59eaf74f11ba
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=829fe599-9b54-4b69-8191-38d9f519df3d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=0feeea45-43c5-4b8b-8be2-61b38f63030b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d4d92dd2-ac30-4558-916e-a94922acbafd
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=6426804c-f3d4-4b85-973d-caf9afd05d85
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=e8074898-682f-4dbf-a970-e88d4d3f1dab
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=14d28697-30e2-4d49-a0f1-7a3d1461a8ae
+[CLIENT] Queued: Heartbeat stream=fde7a4e6-2d3f-4aa5-8d64-a112380c7cb8
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=faa8b010-3a82-48c4-a7ad-591ca6ad9a0b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=17a7db19-fc02-44fd-88ff-681bba248eeb
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=dd2fbee1-75c0-4e07-9a00-5cb5484dcc2d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=eba29ca8-2ccf-4c5f-aab9-54c4375a1512
+[CLIENT] Queued: Heartbeat stream=dd4ae104-3e85-42ee-b1f1-83f685f7e2df
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=03b315d2-b591-4c89-a0d8-ec4f6f48812f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=164d392f-d4d2-4a33-99fe-b541b3306191
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=487e587e-9615-4622-bd59-21a9acfb9ba3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a9922352-f4c4-41ee-a08f-8430d9ee27e0
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d7ffe46c-f87b-4968-9759-7661c7ba572b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=88fd9e84-f8d0-4a47-a077-7dbe14858ae0
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=531b91b9-ae7e-4806-8ffc-b8c0af686c5f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=aca39561-f541-448f-855f-8fe6b644ed83
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=601ac430-964f-4d8a-9b8d-6db2aca22f6d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=9992c336-1009-4143-8c71-84d186f1968c
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=8ccbf68d-466f-42f5-a389-c531b97b27df
+[CLIENT] Queued: Heartbeat stream=1b07b1e5-a858-448a-8f6b-cc27b8c51570
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=19145d1c-26ec-44cc-9c09-e0de89f3c40f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=ad45373c-3222-4d40-9f3f-c3f3c6368d64
+[CLIENT] Queued: Heartbeat stream=7bbf1350-3bc9-4e12-8a6b-b5f7553e74ad
+[CLIENT] Queued: Heartbeat stream=8d3523ed-5bdf-4c26-b0ab-5a4d73084180
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=e58a74fb-3d77-4450-b5e1-a2c7274d1e80
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=9ede5ada-9f2e-4504-9f2d-07786206fd26
+[CLIENT] Queued: Heartbeat stream=2bd60354-c50a-482e-bdcc-e2a001bd81f4
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=4d24a0bf-f169-4420-bd9f-7e89013ebe88
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=18a8d7f3-0120-402d-bfdc-ef9fae73567f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=c65a6420-19e7-468a-96c1-c3c94be2e2d8
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=caf5587c-3fd7-4ff6-b3df-af2a1d8688be
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d860eaff-4415-4f7a-8d4c-3d67a3739e01
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=c4743706-b87f-40d5-bcef-4a12d9aa6686
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=3d3f7d53-eb16-4457-85e7-2fa34e94127a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=f5e2152c-2a70-46aa-affd-b7fd07ff61e3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=f1999cd1-32a7-4df2-bba5-dac30a1b9af8
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=aa23d2b9-fafe-48c6-8b9e-929ec8b270d4
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=642aed6d-3dac-4426-9c4b-3d4f9b0c60ee
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=2439e887-ae51-4a0f-980e-709d00981b02
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=6c497d65-1aff-425b-993f-8e000c80ac1d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=d4145528-292c-4508-a2f4-9bf6228eeb2d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=0ec6d8a3-34bc-4e43-b22c-a88d394be810
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=c5a11c11-39ed-44ce-ae50-a896e86ad4f5
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=93a32fb2-52d3-4f6b-9675-758e5c140291
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=ead37300-52dc-44e5-a869-5bdee78f6bd0
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=71acfb97-d805-498c-a5da-b470eae7f1fe
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a71385de-1ddd-44c7-8c62-e89f9f0a5b31
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=8eea1cd6-778c-4650-9167-cc2657890659
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5d9d750b-d13c-418e-a2ad-5f3d430982e3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=07fc72a6-9d05-45fa-be17-7f7ba9f5df35
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=c6fcf96e-5051-433f-b6f2-3f30175c9eb3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5d1db3b9-a925-4ab9-aed9-c41bc72063e7
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: OpenRequestStream stream=86029d28-81b2-4aa8-9279-0aa38e4d2785
+[CLIENT] Queued: DataRequestStream stream=86029d28-81b2-4aa8-9279-0aa38e4d2785
+[CLIENT] Queued: CloseRequestStream stream=86029d28-81b2-4aa8-9279-0aa38e4d2785
+[CLIENT CloseRequest] Starting processing stream=86029d28-81b2-4aa8-9279-0aa38e4d2785, queueSize=0
+[CLIENT] Starting backend request: Stream=86029d28-81b2-4aa8-9279-0aa38e4d2785, Request=GET / HTTP/1.1
+[PROXY] Raw request size: 725 bytes
+[PROXY] Headers end at byte offset: 721
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET / HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+priority: u=0, i
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /
+[PROXY] Response: 302 FOUND, Content-Length=199, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=199 bytes. Declared Content-Length=199
+[CLIENT] Backend request completed: Stream=86029d28-81b2-4aa8-9279-0aa38e4d2785
+[CLIENT CloseRequest] Completed stream=86029d28-81b2-4aa8-9279-0aa38e4d2785 in 15ms
+[CLIENT] Queued: OpenRequestStream stream=99a96514-802a-49ae-9fe0-dadd82917a93
+[CLIENT] Queued: DataRequestStream stream=99a96514-802a-49ae-9fe0-dadd82917a93
+[CLIENT] Queued: CloseRequestStream stream=99a96514-802a-49ae-9fe0-dadd82917a93
+[CLIENT CloseRequest] Starting processing stream=99a96514-802a-49ae-9fe0-dadd82917a93, queueSize=0
+[CLIENT] Starting backend request: Stream=99a96514-802a-49ae-9fe0-dadd82917a93, Request=GET /login HTTP/1.1
+[PROXY] Raw request size: 730 bytes
+[PROXY] Headers end at byte offset: 726
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /login HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+priority: u=0, i
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /login
+[PROXY] Response: 200 OK, Content-Length=6444, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=6444 bytes. Declared Content-Length=6444
+[CLIENT] Backend request completed: Stream=99a96514-802a-49ae-9fe0-dadd82917a93
+[CLIENT CloseRequest] Completed stream=99a96514-802a-49ae-9fe0-dadd82917a93 in 4ms
+[CLIENT] Queued: OpenRequestStream stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98
+[CLIENT] Queued: DataRequestStream stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98
+[CLIENT] Queued: CloseRequestStream stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98
+[CLIENT CloseRequest] Starting processing stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98, queueSize=0
+[CLIENT] Starting backend request: Stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98, Request=GET /static/style.css HTTP/1.1
+[PROXY] Raw request size: 719 bytes
+[PROXY] Headers end at byte offset: 715
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /static/style.css HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/css,*/*;q=0.1
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+referer: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/login
+sec-fetch-dest: style
+sec-fetch-mode: no-cors
+sec-fetch-site: same-origin
+priority: u=2
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /static/style.css
+[PROXY] Response: 404 NOT FOUND, Content-Length=1675, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=1675 bytes. Declared Content-Length=1675
+[CLIENT] Backend request completed: Stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98
+[CLIENT CloseRequest] Completed stream=8a5c4dec-b2d4-490b-b0bc-1314dff10f98 in 6ms
+[CLIENT] Queued: OpenRequestStream stream=316035a8-bfb0-4126-9d16-6e31cf3b629a
+[CLIENT] Queued: DataRequestStream stream=316035a8-bfb0-4126-9d16-6e31cf3b629a
+[CLIENT] Queued: CloseRequestStream stream=316035a8-bfb0-4126-9d16-6e31cf3b629a
+[CLIENT CloseRequest] Starting processing stream=316035a8-bfb0-4126-9d16-6e31cf3b629a, queueSize=0
+[CLIENT] Starting backend request: Stream=316035a8-bfb0-4126-9d16-6e31cf3b629a, Request=GET /favicon.ico HTTP/1.1
+[PROXY] Raw request size: 765 bytes
+[PROXY] Headers end at byte offset: 761
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /favicon.ico HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+referer: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/login
+sec-fetch-dest: image
+sec-fetch-mode: no-cors
+sec-fetch-site: same-origin
+priority: u=6
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /favicon.ico
+[PROXY] Response: 404 NOT FOUND, Content-Length=1675, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=1675 bytes. Declared Content-Length=1675
+[CLIENT] Backend request completed: Stream=316035a8-bfb0-4126-9d16-6e31cf3b629a
+[CLIENT CloseRequest] Completed stream=316035a8-bfb0-4126-9d16-6e31cf3b629a in 5ms
+[CLIENT] Queued: Heartbeat stream=156f9ca5-4b3f-4e4b-96b1-805ff75c50e7
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=12455911-a010-43fc-8fca-306629cf910a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=2dba7c8a-38a5-4ad4-ab5d-60323796910a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=0d2dd09d-b615-4ee9-8d46-4db25c1a8efe
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=e3a16b83-4da7-41c5-9680-f2aadf9a67d2
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=44802be5-4b8d-425e-b9dd-8a6ffdba572b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=7d25f83d-d690-4d51-bf61-3daaef4e8dfe
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d8e4f08d-ef51-4273-bbda-9f460e87a4fd
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5cc6ee30-425a-481e-a890-535223c24c26
+[CLIENT] Queued: Heartbeat stream=11dee366-e15f-4675-9282-adc59cf92d05
+[CLIENT] Queued: Heartbeat stream=bf7a2b45-4a4f-48f2-ac3d-22f69ff50091
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=651d913b-f2cd-4e8a-bb37-ec825806facc
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=8538d20c-17dc-48a1-85c2-7e12b78adcce
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=566882fa-fb02-44f8-a56d-5d631886f9b3
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=6761eab0-ba97-4627-ba0e-94262323b507
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d0935aea-789e-4611-be2f-a283416dea88
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=f8d3d77a-9660-437b-95f3-190eadff9430
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=06ea9fd8-2ec7-4c53-a052-c6b1aa6880cc
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=cfa4b611-77d9-4a9e-a9a6-ed615b3f7849
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=f11927c3-4ccb-4b33-b918-3a7911ebb46b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=4e90ad34-94b7-4e42-bca3-9223ee318ccf
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=56eac880-602d-4b4c-9787-55b36ca01fb2
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=608710b6-ed3b-4a1f-b78e-9342e9b3a996
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=675ba2ff-3d97-4e99-8c57-611648d1b8ba
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=52c01881-cd09-4787-bd5e-b44f23383cfc
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a677b4a6-589d-4520-96ef-e6e4d168f149
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=146bcf1b-d410-41c5-915e-3200e43eb5f0
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=22e1b181-09d6-4bed-800c-b95316894fc2
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=e5ce6f29-adb1-4fa8-b081-872586e32be7
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=64189b0f-6d21-49fb-a60f-eb41386e6c6f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=178e2c93-241f-46b0-872c-ac7ca2013380
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=44e7daec-38d0-4a1f-b406-16316a8aeb82
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[WRITELOOP-0] Iteration 100: ControlQ=0, DataQ=0
+[CLIENT] Queued: Heartbeat stream=6f174bad-dd63-4e5a-b32f-2a31a64e5308
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=102811ea-da69-4828-85d7-673c21292cd2
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=7766788b-0110-44e2-b275-37d52aea00fb
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=dff863f4-7038-4b14-b0ea-c94b0402cfb4
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=f008b38b-9d68-414b-a58c-eb9cce881f9d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=088aa5f5-aa88-47fd-8e82-fda930b02344
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5994856e-7e26-42f6-9629-0882971642a6
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=da409de0-5fcd-4f51-bc25-e5bfbf4ff953
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=1e4fe885-a02a-4f0c-89bf-e4b8bd581d51
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a2ce92f8-6f55-46a5-a92d-76b2fd6e10b2
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=1aa0ec73-4820-4617-9b41-abbc6667b3c4
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=f3f9f4c3-3b9d-427a-bc57-32905941122c
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=42b3a8c4-f46b-4346-b2d1-afcee11ed618
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a78fc0a7-cf2a-4bdc-af66-8ad7dd67a11d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=efb351b1-6200-4672-b273-1f3bbe210443
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=334349fa-7cfa-4852-b2a4-293c7610e112
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=8eb665e0-4be6-41fe-b21a-99c230da05f9
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=702661ee-2e35-41a0-8cc2-584c3deaae72
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=2a7b9809-57fb-42b8-ac93-ca916df13a2e
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=fecdfc62-4de8-45b4-abd9-1636edb87d8a
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=9d41e6f6-176b-4b4b-b11a-782a3d498e84
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=64a73ea7-407b-4e80-b66e-cae0335cf0a9
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=efc6a49f-fc80-4ea0-ba6c-18b9b6e71e1d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=996354e9-de23-42fb-a5bd-ccca19279466
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=02c888d5-785c-485b-a81c-dda2c732f84e
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=798133a1-2b65-4540-a72d-cd1dfaa5068f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=970185f5-72b4-4c13-9fa7-7fe4f239e09e
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=794eb529-128d-4c77-accf-68b9dd38df82
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=dbbf18eb-2893-4790-93cc-eeed27c81cac
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d9d11e52-3175-4f46-9576-17e6a88f2179
+[CLIENT] Queued: Heartbeat stream=e63d5c07-5599-4d07-9e68-a60aa709f37f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=eb3cc956-08da-421a-b7a2-394a75cd774c
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=da611e6c-0b99-4762-a8f6-0e5fe0bf107d
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=df5025bc-577c-40f7-9add-d6914333ab5f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=b71b1138-0baf-4c46-9275-f91368fb2f00
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5ac293f4-a244-421d-8103-36eff1319f5f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: OpenRequestStream stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412
+[CLIENT] Queued: DataRequestStream stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412
+[CLIENT] Queued: CloseRequestStream stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412
+[CLIENT CloseRequest] Starting processing stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412, queueSize=0
+[CLIENT] Starting backend request: Stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412, Request=GET / HTTP/1.1
+[PROXY] Raw request size: 748 bytes
+[PROXY] Headers end at byte offset: 744
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET / HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+priority: u=0, i
+pragma: no-cache
+cache-control: no-cache
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /
+[PROXY] Response: 302 FOUND, Content-Length=199, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=199 bytes. Declared Content-Length=199
+[CLIENT] Backend request completed: Stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412
+[CLIENT CloseRequest] Completed stream=5d8b1cf7-0a55-42ec-9349-4c2dc2cc8412 in 8ms
+[CLIENT] Queued: OpenRequestStream stream=caa1bbf4-4186-41cf-8378-ef3088e73b94
+[CLIENT] Queued: DataRequestStream stream=caa1bbf4-4186-41cf-8378-ef3088e73b94
+[CLIENT] Queued: CloseRequestStream stream=caa1bbf4-4186-41cf-8378-ef3088e73b94
+[CLIENT CloseRequest] Starting processing stream=caa1bbf4-4186-41cf-8378-ef3088e73b94, queueSize=0
+[CLIENT] Starting backend request: Stream=caa1bbf4-4186-41cf-8378-ef3088e73b94, Request=GET /login HTTP/1.1
+[PROXY] Raw request size: 753 bytes
+[PROXY] Headers end at byte offset: 749
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /login HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+upgrade-insecure-requests: 1
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+priority: u=0, i
+pragma: no-cache
+cache-control: no-cache
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /login
+[PROXY] Response: 200 OK, Content-Length=6444, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=6444 bytes. Declared Content-Length=6444
+[CLIENT] Backend request completed: Stream=caa1bbf4-4186-41cf-8378-ef3088e73b94
+[CLIENT CloseRequest] Completed stream=caa1bbf4-4186-41cf-8378-ef3088e73b94 in 9ms
+[CLIENT] Queued: Heartbeat stream=de3ca478-ee7b-438a-9529-5902387feadd
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=6f88a71a-ce43-4009-a114-37f5c0ba12e1
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=c0cde734-bfb7-408e-9d48-d3657b96af6c
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: OpenRequestStream stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf
+[CLIENT] Queued: DataRequestStream stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf
+[CLIENT] Queued: CloseRequestStream stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf
+[CLIENT CloseRequest] Starting processing stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf, queueSize=0
+[CLIENT] Starting backend request: Stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf, Request=GET /static/style.css HTTP/1.1
+[PROXY] Raw request size: 762 bytes
+[PROXY] Headers end at byte offset: 758
+[PROXY] Body length: 0 bytes
+[PROXY] Parsed headers:
+GET /static/style.css HTTP/1.1
+host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+accept: text/css,*/*;q=0.1
+accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+referer: https://6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com/login
+sec-fetch-dest: style
+sec-fetch-mode: no-cors
+sec-fetch-site: same-origin
+priority: u=2
+pragma: no-cache
+cache-control: no-cache
+te: trailers
+x-routing-key: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-proto: https
+x-forwarded-port: 443
+x-forwarded-host: 6d718f83-d0da-40a9-822d-ff00b4c6949b.tunnel4.com
+x-forwarded-for: 92.62.58.112
+connection: close
+[PROXY] Method: GET, Path: /static/style.css
+[CLIENT] Queued: Heartbeat stream=0f7f90f7-2518-4acb-a33f-185543733143
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[PROXY] Response: 404 NOT FOUND, Content-Length=1675, willChunk=False
+[PROXY] Streaming response with Content-Length...
+[PROXY] Full response streamed. Total=1675 bytes. Declared Content-Length=1675
+[CLIENT] Backend request completed: Stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf
+[CLIENT CloseRequest] Completed stream=c8cdd9cc-dcc1-494f-8917-6cf8123f0dbf in 6ms
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=f71e806a-7978-42c0-b723-3d8c6a7f2f0c
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=8abe2e1f-0aab-4082-8ce7-3f5c54074fe8
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=9d49f781-c530-4f18-9ee2-2ab2de776c24
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=5331ff60-9715-4d2b-bb49-528bdf2cc892
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a4a0b57a-5b9c-448c-9478-4073eca99199
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=ab77fa47-fafd-4d06-9965-cb2ae67eaff1
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=538ed16f-1a74-4008-81c9-8e35d06e37b1
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=eed564db-a774-4684-8bfe-929421c7e97b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a6e62e2f-13a7-4458-8fe3-e21b060b5f45
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=301f5239-3b8f-4c08-9232-2922bd097767
+[CLIENT] Queued: Heartbeat stream=44064c3d-79aa-4d3b-afe2-0377d0bf0540
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=d6ca73a9-148e-4f0e-9f11-147239d1e12b
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[HEALTH] Probe OK
+[CLIENT] Queued: Heartbeat stream=159e7d8a-4b62-400d-8e81-dcee359965f8
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=a780442f-192e-4a10-8203-1b78dd014bfb
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=2e54cace-674b-469d-8784-61e364c03e8f
+[CLIENT] Heartbeat PONG received from ProxyEntry
+[CLIENT] Queued: Heartbeat stream=cb706383-4665-4dc0-8915-4cd2039a5ebe
+[CLIENT] Heartbeat PONG received from ProxyEntry

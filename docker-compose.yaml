@@ -12,6 +12,7 @@ services:
       - POSTGRES_DB=front
     volumes:
       - ./postgres-init.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+
   migrator-front:
     build:
       context: .
@@ -20,17 +21,9 @@ services:
       - postgres
       - redis
 
-  migrator-back:
-    image: migrator-back:latest
-
-  back:
-    image: teleback:latest
-    depends_on:
-      - migrator-back
-      - redis
-      - postgres
-
   front:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build:
       context: .
       dockerfile: Dockerfile
@@ -38,8 +31,7 @@ services:
       - migrator-front
       - redis
       - postgres
-      - back
     ports:
-      - "8080:8080"
+      - "8181:8080"
 
 

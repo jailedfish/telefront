@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker, Mapped, mapped_column, declarative_base
 from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
+
 eng = create_engine(env.get('POSTGRES_URL'))
 session = sessionmaker(bind=eng)()
 

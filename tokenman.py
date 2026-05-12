@@ -18,8 +18,8 @@ class Tokenman:
 
     def renew_token(self):
         try:
-            data = requests.post('http://localhost:8081/api/token', json={'user_id': 1,
-                                                                                 'password': 'The sun in the sky is red, The sun in my heart is Mao Zedong!'}).json()
+            data = requests.post('http://host.docker.internal:8180/api/token', json={'user_id': 1,
+                                                                                 'password': 'apply123!'}).json()
         except JSONDecodeError:
             return
         if data.get('success', False):

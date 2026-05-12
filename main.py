@@ -6,7 +6,8 @@ from tokenman import Tokenman
 import requests
 from flask import Flask, request, redirect, make_response
 from jinja2 import Environment, FileSystemLoader
-from redis.client import Redis
+import redis
+import os
 from hashlib import sha3_256
 from models import *
 from datetime import datetime
@@ -19,7 +20,7 @@ logging.basicConfig(
 )
 app_token = Tokenman()
 app = Flask('flask', static_folder='static')
-redis = Redis()
+redis = redis.from_url(os.getenv('REDIS_URL'))
 t_env = Environment(loader=FileSystemLoader('./templates'))
 
 
@@ -37,7 +38,8 @@ def check_token():
     except ValueError as e:
         logging.warning('Incorrect cookies type', exc_info=e)
         return False
-    token_excepted = (redis.getex(f'token_{user_id}', timedelta(days=7))).decode()
+    token_excepted = redis.getex(f'token_{user_id}', timedelta(days=7))
+    token_excepted = token_excepted.decode() if token_excepted is not None else token_excepted
     print(token_excepted)
     return token == token_excepted
 
@@ -89,21 +91,21 @@ def get_2fa():
         print(e)
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
     if not error:
-        data = requests.post(url='http://localhost:8081/api/message',
+        data = requests.post(url='http://host.docker.internal:8180/api/message',
                              headers={"Authorization": f"Bearer {app_token.get_token()}", 'User-id': '1'},
                              json={'user_id': tg_id}).json()
 
         if not data.get('success', False):
             if data.get('error_subcode', '') == 'WrongToken':
                 app_token.renew_token()
-                data = requests.post(url='http://localhost:8081/api/message',
+                data = requests.post(url='http://host.docker.internal:8180/api/message',
                                      headers={"Authorization": f"Bearer {app_token.get_token()}", 'User-id': '1'},
                                      json={'user_id': tg_id}).json()
 
         print(data)
         if data.get('error_subcode', '') != 'MsgAlreadySent':
 
-            redis.set(f'code_{tg_id}', data.get('data', {}).get('code'), timedelta(minutes=5))
+            redis.set(f'code_{tg_id}', data.get('data', {}).get('code', ''), timedelta(minutes=5))
 
     resp = t_env.get_template('2fa.html').render(wrong_code=error)
     return resp
