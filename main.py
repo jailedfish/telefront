@@ -105,6 +105,8 @@ def get_2fa():
         print(e)
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
     user = session.query(User).filter(User.tg_id == tg_id).one_or_none()
+    logging.error(session.query(User).all())
+    logging.error(tg_id == 6873126006)
     if user is None:
         return render_error(404, 'пользователь с таким telegram id не найден, зарегистрируйтесь и попробуйте снова')
     if not error:
@@ -143,8 +145,11 @@ def login():
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
 
     code = redis.get(f'code_{tg_id}')
-    if not isinstance(code, NoneType):
-        code = int(code.decode())
+    if isinstance(code, None):
+        try:
+            code = int(code.decode())
+        except:
+            code = -1
     print(f'code: {code}, i_code: {full_code}')
     if code != full_code:
         return redirect(f'/2fa?wrong_code=True&tg_id={tg_id}')
