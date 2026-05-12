@@ -24,10 +24,16 @@
             max-width: 500px;
             width: 100%;
         }
-        .error-code {
+        .error-code-warn {
             font-size: 4rem;
             font-weight: bold;
             color: #e69d28;
+            margin: 0;
+        }
+        .error-code-warn {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #eb2a2a;
             margin: 0;
         }
         .error-comment {
@@ -47,7 +53,11 @@
 </head>
 <body>
     <div class="error-container">
-        <h1 class="error-code">{{ status }}</h1>  <!-- Код ошибки -->
+        {% if status < 500 %}
+        <h1 class="error-code-warn">{{ status }}</h1>  <!-- Код ошибки -->
+        {% else %}
+        <h1 class="error-code-error">{{ status }}</h1>  <!-- Код ошибки -->
+        {% endif %}
         <p class="error-comment">{{ comment }}</p>  <!-- Комментарий -->
         <a href="/" class="home-link">Вернуться на главную</a>
     </div>

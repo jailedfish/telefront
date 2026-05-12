@@ -21,12 +21,34 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+        .verify-button {
+            margin-top: 10px;
+        }
+        .verify-button {
+            width: 25%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .verify-button:hover {
+            background-color: #3a7bc8;
+        }
     </style>
 </head>
 <body>
     <div class="welcome-message">
         <h1>Здравствуйте, авторизованный пользователь {{ user_name }}!</h1>
         <p>Добро пожаловать в систему.</p>
+        <form action="/logout">
+            <input type="submit" class="verify-button" value="Выйти" />
+        </form>
     </div>
 </body>
 </html>

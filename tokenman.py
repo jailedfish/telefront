@@ -21,7 +21,8 @@ class Tokenman:
             data = requests.post('http://host.docker.internal:8180/api/token', json={'user_id': 1,
                                                                                  'password': 'apply123!'}).json()
         except JSONDecodeError:
-            return
+            return False
+        
         if data.get('success', False):
             self.token = data['data'].get('token', ' ')
             return True

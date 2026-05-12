@@ -30,6 +30,11 @@ def handle_404(handler):
                               comment='Страница не найдена, если вы были перенаправлены сюда автоматически, '
                                       'то мне очень жаль')
 
+@app.errorhandler(500)
+def handle_404(handler):
+    return render_error(status=500,
+                              comment='На сервере обнаружена критическая ошибка, обработка запроса невозможна. Свяжитесь с администратором: <a href="https://t.me/herr_jailedfish">@jailedfish</a>')
+
 
 def check_token():
     try:
@@ -38,10 +43,11 @@ def check_token():
     except ValueError as e:
         logging.warning('Incorrect cookies type', exc_info=e)
         return False
-    token_excepted = redis.getex(f'token_{user_id}', timedelta(days=7))
-    token_excepted = token_excepted.decode() if token_excepted is not None else token_excepted
-    print(token_excepted)
-    return token == token_excepted
+    token_excepted = (redis.getex(f'token_{user_id}', timedelta(days=7)))
+    if isinstance(token_excepted, NoneType):
+        return False
+
+    return token == token_excepted.decode()
 
 
 def render_error(status: int | None = 500, comment: str | None = 'Ошибка сервера'):
@@ -56,9 +62,11 @@ def get_index():
         return render_error(400, 'Ошибка файлов cookie, попробуйте очистить кеш браузера')
 
     if not (check_token()):
-        return redirect('/login')
+        return redirect('/register')
 
-    return t_env.get_template('index.html').render(uname=user_id)
+    user = session.get(User, user_id)
+
+    return t_env.get_template('index.html').render(user_name=user.name)
 
 @app.get('/register')
 def get_register():
@@ -71,10 +79,16 @@ def register():
         tg_id = int(request.form.get('tg_id', ''))
     except ValueError as e:
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
-
+    users = session.query(User).where(User.name == name or User.tg_id == tg_id).all()
+    print(users)
+    if users:
+        return render_error(409, 'Пользователь с таким именем или id уже существует')
     user = User(name=name, tg_id=tg_id)
     session.add(user)
-    session.commit()
+    try:
+        session.commit()
+    except:
+        session.rollback()
 
     token = sha3_256((name + datetime.now().isoformat()).encode()).hexdigest()
     redis.set(f'token_{tg_id}_authorising', token)
@@ -90,12 +104,18 @@ def get_2fa():
     except ValueError as e:
         print(e)
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
+    user = session.query(User).filter(User.tg_id == tg_id).one_or_none()
+    if user is None:
+        return render_error(404, 'пользователь с таким telegram id не найден, зарегистрируйтесь и попробуйте снова')
     if not error:
         data = requests.post(url='http://host.docker.internal:8180/api/message',
                              headers={"Authorization": f"Bearer {app_token.get_token()}", 'User-id': '1'},
                              json={'user_id': tg_id}).json()
 
         if not data.get('success', False):
+            if data.get('error_subcode') == 'NoUserFound':
+
+                return render_error(404, 'Пользователь с таким telegram id не найден, проверьте правильность ввода')
             if data.get('error_subcode', '') == 'WrongToken':
                 app_token.renew_token()
                 data = requests.post(url='http://host.docker.internal:8180/api/message',
@@ -136,5 +156,11 @@ def login():
     resp.set_cookie('uid', str(user.id))
     return resp
 
+@app.get('/logout')
+def logout():
+    resp = make_response(redirect('/'))
+    resp.set_cookie('token', '', 0)
+    resp.set_cookie('uid', '', 0)
+    return resp
 
 app.run(host='0.0.0.0', port=8080, debug=False)

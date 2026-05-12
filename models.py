@@ -4,7 +4,7 @@ from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
 
-eng = create_engine(env.get('POSTGRES_URL'))
+eng = create_engine('postgresql+psycopg2://front:front@localhost:6543/front')
 session = sessionmaker(bind=eng)()
 
 class Base(declarative_base()):
