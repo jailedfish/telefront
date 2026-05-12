@@ -145,11 +145,10 @@ def login():
         return render_error(400, 'Ошибка запроса, разработчику очень жаль')
 
     code = redis.get(f'code_{tg_id}')
-    if isinstance(code, None):
-        try:
-            code = int(code.decode())
-        except:
-            code = -1
+    try:
+        code = int(code.decode())
+    except:
+        code = -1
     print(f'code: {code}, i_code: {full_code}')
     if code != full_code:
         return redirect(f'/2fa?wrong_code=True&tg_id={tg_id}')
